@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホットペッパー スタイル投稿シート｜西 勇哉</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #f5f5f5; color: #333; padding: 16px; }
+  h1 { font-size: 18px; font-weight: bold; margin-bottom: 4px; color: #222; }
+  .subtitle { font-size: 12px; color: #888; margin-bottom: 20px; }
+  .section { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .section-title { font-size: 13px; font-weight: bold; color: #555; margin-bottom: 12px; border-bottom: 2px solid #e8e8e8; padding-bottom: 6px; }
+  .pattern-badge { display: inline-block; background: #222; color: #fff; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 20px; margin-bottom: 10px; }
+  .field { margin-bottom: 14px; }
+  .field-label { font-size: 11px; color: #888; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+  .field-label span { font-size: 11px; color: #aaa; }
+  .field-content { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.6; position: relative; }
+  .copy-btn { position: absolute; top: 8px; right: 8px; background: #333; color: #fff; border: none; border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; transition: background 0.2s; }
+  .copy-btn:hover { background: #555; }
+  .copy-btn.copied { background: #4caf50; }
+  .char-count { font-size: 11px; color: #aaa; text-align: right; margin-top: 4px; }
+  .char-over { color: #e53935; font-weight: bold; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; position: relative; }
+  .tag { background: #eee; border-radius: 20px; padding: 3px 10px; font-size: 12px; color: #444; }
+  .tag-item { display: inline-flex; align-items: center; gap: 4px; background: #eee; border-radius: 20px; padding: 4px 10px; font-size: 12px; color: #444; cursor: pointer; transition: background 0.2s; }
+  .tag-item:hover { background: #ddd; }
+  .tag-item.copied { background: #c8e6c9; color: #2e7d32; }
+  .tag-copy { font-size: 10px; background: #ccc; border-radius: 10px; padding: 1px 6px; color: #555; }
+  .tag-item.copied .tag-copy { background: #4caf50; color: #fff; }
+  .copy-all-btn { display: block; width: 100%; background: #333; color: #fff; border: none; border-radius: 8px; padding: 10px; font-size: 13px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+  .copy-all-btn:hover { background: #555; }
+  .copy-all-btn.copied { background: #4caf50; }
+  .fixed-section { background: #fff3e0; border: 1px solid #ffe0b2; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .fixed-section .section-title { color: #e65100; border-bottom-color: #ffe0b2; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab { background: #e0e0e0; border: none; border-radius: 20px; padding: 6px 14px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+  .tab.active { background: #333; color: #fff; }
+  .pattern-section { display: none; }
+  .pattern-section.active { display: block; }
+  .note { font-size: 11px; color: #999; margin-top: 6px; }
+  .variant-label { font-size: 12px; font-weight: bold; color: #666; margin-bottom: 6px; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<h1>📋 ホットペッパー スタイル投稿シート</h1>
+<p class="subtitle">西 勇哉｜chobii銀座 ／ テキストをタップ→コピーボタンで貼り付け</p>
+
+<!-- 共通固定項目 -->
+<div class="fixed-section">
+  <div class="section-title">🔒 毎回共通（変更不要）</div>
+
+  <div class="field">
+    <div class="field-label">クーポン</div>
+    <div class="field-content" id="coupon">【人気No.1 コテ巻き風パーマ】カット+デジタルパーマ+シルキーTr￥16000
+      <button class="copy-btn" onclick="copyText('coupon', this)">コピー</button>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">メニュー内容（50文字以内）</div>
+    <div class="field-content" id="menu">カット　デジタルパーマ　イルミナカラー　トキオトリートメント
+      <button class="copy-btn" onclick="copyText('menu', this)">コピー</button>
+    </div>
+    <div class="char-count" id="menu-count"></div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">ハッシュタグ（20個）<span>コピーして全部貼り付け</span></div>
+    <div class="tag-list" id="tags-display">
+      <button class="tag-item" onclick="copyTag(this, 'コテ巻き風パーマ')">コテ巻き風パーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'デジタルパーマ')">デジタルパーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '韓国風パーマ')">韓国風パーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '顔周りレイヤー')">顔周りレイヤー <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '小顔カット')">小顔カット <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '髪質改善')">髪質改善 <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '銀座美容室')">銀座美容室 <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '似合わせカット')">似合わせカット <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'ミディアムパーマ')">ミディアムパーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'ロングパーマ')">ロングパーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'ワンホンヘア')">ワンホンヘア <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'くびれヘア')">くびれヘア <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'ヨシンモリ')">ヨシンモリ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'エギョモリ')">エギョモリ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'シースルーバング')">シースルーバング <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'おくれ毛')">おくれ毛 <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, 'ダメージレスパーマ')">ダメージレスパーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '朝ラクヘア')">朝ラクヘア <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '銀座パーマ')">銀座パーマ <span class="tag-copy">コピー</span></button>
+      <button class="tag-item" onclick="copyTag(this, '東銀座美容室')">東銀座美容室 <span class="tag-copy">コピー</span></button>
+    </div>
+    <div id="tags-hidden" style="display:none">コテ巻き風パーマ
+デジタルパーマ
+韓国風パーマ
+顔周りレイヤー
+小顔カット
+髪質改善
+銀座美容室
+似合わせカット
+ミディアムパーマ
+ロングパーマ
+ワンホンヘア
+くびれヘア
+ヨシンモリ
+エギョモリ
+シースルーバング
+おくれ毛
+ダメージレスパーマ
+朝ラクヘア
+銀座パーマ
+東銀座美容室</div>
+    <button class="copy-all-btn" onclick="copyText('tags-hidden', this)">ハッシュタグを全部コピー</button>
+    <p class="note">※ホットペッパーの入力欄に1つずつ追加するか、まとめてコピーして貼り付けてください</p>
+  </div>
+</div>
+
+<!-- パターン選択タブ -->
+<div class="section">
+  <div class="section-title">📸 写真パターン別 スタイル名・コメント</div>
+  <p class="note" style="margin-bottom:12px">写真の雰囲気に合うパターンを選んでコピーしてください</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPattern('A')">パターンA<br><small>韓国風・コテ巻き<br>（王道・最多）</small></button>
+    <button class="tab" onclick="showPattern('B')">パターンB<br><small>ミディアム・ボブ<br>伸ばしかけ</small></button>
+    <button class="tab" onclick="showPattern('C')">パターンC<br><small>顔周り特化<br>小顔・前髪</small></button>
+    <button class="tab" onclick="showPattern('D')">パターンD<br><small>ロング・ゆるふわ<br>大人っぽい</small></button>
+  </div>
+
+  <!-- パターンA -->
+  <div class="pattern-section active" id="pattern-A">
+    <div class="pattern-badge">パターンA｜韓国風コテ巻きパーマ（王道）</div>
+    <p class="note" style="margin-bottom:10px">対象写真：IMG_4064, IMG_4083, IMG_4797, IMG_4870, IMG_5370, IMG_5369, IMG_5362, IMG_5508, IMG_5441 など</p>
+
+    <div class="variant-label">▼ スタイル名（30文字以内）— 3パターン用意、好きなものを使ってください</div>
+
+    <div class="field">
+      <div class="field-label">A-1</div>
+      <div class="field-content" id="a1">西/韓国風パーマ/デジタルパーマ/顔周りレイヤー/小顔/銀座
+        <button class="copy-btn" onclick="copyText('a1', this)">コピー</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">A-2</div>
+      <div class="field-content" id="a2">西/コテ巻き風パーマ/デジタルパーマ/くびれヘア/朝ラク/銀座
+        <button class="copy-btn" onclick="copyText('a2', this)">コピー</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">A-3</div>
+      <div class="field-content" id="a3">西/韓国風/コテ巻き風パーマ/おくれ毛/ワンホンヘア/銀座
+        <button class="copy-btn" onclick="copyText('a3', this)">コピー</button>
+      </div>
+    </div>
+
+    <div class="variant-label" style="margin-top:16px">▼ コメント（120文字以内）— 2パターン用意、交互に使ってください</div>
+
+    <div class="field">
+      <div class="field-label">コメントA-1（保存誘導型）<span id="ca1-count"></span></div>
+      <div class="field-content" id="ca1">【保存してカウンセリングでお使いください】毎朝アイロンが面倒な方へ！乾かすだけでコテで巻いたような柔らかい質感になる韓国風パーマ。骨格に合わせた顔周りレイヤーで小顔効果も◎インスタも更新中！@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('ca1', this)">コピー</button>
+      </div>
+      <div class="char-count" id="ca1-chars"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">コメントA-2（再現性訴求型）<span id="ca2-count"></span></div>
+      <div class="field-content" id="ca2">【スタイルはブックマークしてご提示ください】ダメージレスにこだわった西流デジタルパーマ。髪質を見極めた薬剤選定で触りたくなる柔らかい質感に。結んだ時も可愛い顔周りのおくれ毛がポイントです！@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('ca2', this)">コピー</button>
+      </div>
+      <div class="char-count" id="ca2-chars"></div>
+    </div>
+  </div>
+
+  <!-- パターンB -->
+  <div class="pattern-section" id="pattern-B">
+    <div class="pattern-badge">パターンB｜ミディアム・ボブ・伸ばしかけ</div>
+    <p class="note" style="margin-bottom:10px">対象写真：IMG_3986, IMG_4065, IMG_4120, IMG_4122 など（肩〜鎖骨あたりの長さ）</p>
+
+    <div class="variant-label">▼ スタイル名（30文字以内）</div>
+    <div class="field">
+      <div class="field-label">B-1</div>
+      <div class="field-content" id="b1">西/韓国風/デジタルパーマ/ミディアム/伸ばしかけ/銀座
+        <button class="copy-btn" onclick="copyText('b1', this)">コピー</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">B-2</div>
+      <div class="field-content" id="b2">西/コテ巻き風パーマ/ミディアム/結べるボブ/銀座
+        <button class="copy-btn" onclick="copyText('b2', this)">コピー</button>
+      </div>
+    </div>
+
+    <div class="variant-label" style="margin-top:16px">▼ コメント（120文字以内）</div>
+    <div class="field">
+      <div class="field-label">コメントB-1</div>
+      <div class="field-content" id="cb1">【保存してカウンセリングでお使いください】肩に当たる長さでもハネを活かして可愛くキマるミディアムパーマ。伸ばしかけでマンネリしている方におすすめ！骨格に合わせたカットで再現性抜群◎@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('cb1', this)">コピー</button>
+      </div>
+      <div class="char-count" id="cb1-chars"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">コメントB-2</div>
+      <div class="field-content" id="cb2">【スタイルはブックマークしてご提示ください】ミディアムでも毎朝のセットが劇的に楽になるデジタルパーマ。顔周りのカットと連動した設計で、どこから見ても綺麗なシルエットに◎@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('cb2', this)">コピー</button>
+      </div>
+      <div class="char-count" id="cb2-chars"></div>
+    </div>
+  </div>
+
+  <!-- パターンC -->
+  <div class="pattern-section" id="pattern-C">
+    <div class="pattern-badge">パターンC｜顔周り特化・小顔・前髪</div>
+    <p class="note" style="margin-bottom:10px">対象写真：顔周りのレイヤーやおくれ毛が特に目立つもの（IMG_4809, IMG_4807 など）</p>
+
+    <div class="variant-label">▼ スタイル名（30文字以内）</div>
+    <div class="field">
+      <div class="field-label">C-1</div>
+      <div class="field-content" id="c1">西/韓国風パーマ/顔周りレイヤー/小顔/くびれヘア/銀座
+        <button class="copy-btn" onclick="copyText('c1', this)">コピー</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">C-2</div>
+      <div class="field-content" id="c2">西/デジタルパーマ/骨格補正/おくれ毛/シースルーバング/銀座
+        <button class="copy-btn" onclick="copyText('c2', this)">コピー</button>
+      </div>
+    </div>
+
+    <div class="variant-label" style="margin-top:16px">▼ コメント（120文字以内）</div>
+    <div class="field">
+      <div class="field-label">コメントC-1</div>
+      <div class="field-content" id="cc1">【保存してカウンセリングでお使いください】印象の8割を決める顔周りのカットにこだわっています。骨格をカバーするレイヤーとパーマ設計で、どこから見ても美しいシルエットに◎毎朝のセットが劇的に楽になります！@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('cc1', this)">コピー</button>
+      </div>
+      <div class="char-count" id="cc1-chars"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">コメントC-2</div>
+      <div class="field-content" id="cc2">【スタイルはブックマークしてご提示ください】顔周りのレイヤーとおくれ毛で、誰でも小顔に見えるパーマスタイル。雨の日やマスクをしていても一日中キープ◎再現性にこだわった西流デジタルパーマです！@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('cc2', this)">コピー</button>
+      </div>
+      <div class="char-count" id="cc2-chars"></div>
+    </div>
+  </div>
+
+  <!-- パターンD -->
+  <div class="pattern-section" id="pattern-D">
+    <div class="pattern-badge">パターンD｜ロング・ゆるふわ・大人っぽい</div>
+    <p class="note" style="margin-bottom:10px">対象写真：胸より下のロングスタイル（IMG_5370, IMG_5369 など）</p>
+
+    <div class="variant-label">▼ スタイル名（30文字以内）</div>
+    <div class="field">
+      <div class="field-label">D-1</div>
+      <div class="field-content" id="d1">西/韓国風パーマ/デジタルパーマ/ロング/ゆるふわ/銀座
+        <button class="copy-btn" onclick="copyText('d1', this)">コピー</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">D-2</div>
+      <div class="field-content" id="d2">西/コテ巻き風パーマ/ロング/ダメージレス/髪質改善/銀座
+        <button class="copy-btn" onclick="copyText('d2', this)">コピー</button>
+      </div>
+    </div>
+
+    <div class="variant-label" style="margin-top:16px">▼ コメント（120文字以内）</div>
+    <div class="field">
+      <div class="field-label">コメントD-1</div>
+      <div class="field-content" id="cd1">【保存してカウンセリングでお使いください】ロングでも重くならない、柔らかくて女性らしいゆるふわパーマ。ダメージレスにこだわった薬剤選定で、触りたくなる質感に仕上げます◎インスタも更新中！@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('cd1', this)">コピー</button>
+      </div>
+      <div class="char-count" id="cd1-chars"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">コメントD-2</div>
+      <div class="field-content" id="cd2">【スタイルはブックマークしてご提示ください】ロングヘアでも毎朝乾かすだけでキマる！骨格に合わせたカットとパーマの連動設計で、一日中崩れない再現性の高いスタイルに仕上げます◎@nishi_perm_ginza
+        <button class="copy-btn" onclick="copyText('cd2', this)">コピー</button>
+      </div>
+      <div class="char-count" id="cd2-chars"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 使い方ガイド -->
+<div class="section">
+  <div class="section-title">📖 使い方（3ステップ）</div>
+  <ol style="font-size:13px; line-height:2; padding-left:18px; color:#444;">
+    <li>写真の雰囲気に合うパターン（A〜D）をタブで選ぶ</li>
+    <li>スタイル名・コメントをコピーして貼り付ける</li>
+    <li>ハッシュタグは「ハッシュタグを全部コピー」ボタンで一括コピー</li>
+  </ol>
+  <p class="note" style="margin-top:8px">※スタイル名・コメントは複数パターン用意しています。同じ写真でも毎回少し変えると検索に引っかかりやすくなります。</p>
+</div>
+
+<script>
+function copyTag(el, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    el.classList.add('copied');
+    el.querySelector('.tag-copy').textContent = '✓';
+    setTimeout(() => {
+      el.classList.remove('copied');
+      el.querySelector('.tag-copy').textContent = 'コピー';
+    }, 1500);
+  });
+}
+
+function copyText(id, btn) {
+  const el = document.getElementById(id);
+  let text = el.innerText.replace('コピー', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ コピー済み';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'コピー';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function showPattern(p) {
+  document.querySelectorAll('.pattern-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('pattern-' + p).classList.add('active');
+  event.target.closest('.tab').classList.add('active');
+}
+
+// 文字数カウント
+function countChars() {
+  const fields = {
+    'ca1': 'ca1-chars', 'ca2': 'ca2-chars',
+    'cb1': 'cb1-chars', 'cb2': 'cb2-chars',
+    'cc1': 'cc1-chars', 'cc2': 'cc2-chars',
+    'cd1': 'cd1-chars', 'cd2': 'cd2-chars',
+  };
+  for (const [id, countId] of Object.entries(fields)) {
+    const el = document.getElementById(id);
+    const countEl = document.getElementById(countId);
+    if (el && countEl) {
+      const text = el.innerText.replace('コピー', '').trim();
+      const len = text.length;
+      const limit = 120;
+      countEl.innerHTML = `<span class="${len > limit ? 'char-over' : ''}">${len}/${limit}文字</span>`;
+    }
+  }
+}
+window.addEventListener('load', countChars);
+</script>
+</body>
+</html>
