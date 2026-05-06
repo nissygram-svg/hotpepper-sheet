@@ -5,64 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>インスタリール台本 コピペツール</title>
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: 15px;
-    background-color: #f4f7f6;
-    color: #333;
-  }
-  h2 {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #444;
-  }
-  .script-card {
-    background: #ffffff;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-  .script-title {
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-    border-bottom: 2px solid #eef2f5;
-    padding-bottom: 8px;
-  }
-  .item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-  .item-text {
-    flex: 1;
-    font-size: 14px;
-    line-height: 1.4;
-    margin-right: 12px;
-    color: #555;
-  }
-  .copy-btn {
-    background: #007aff;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s;
-  }
-  .copy-btn:active {
-    background: #005bb5;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 15px; background-color: #f4f7f6; color: #333; }
+  h2 { font-size: 18px; text-align: center; margin-bottom: 20px; color: #444; }
+  .script-card { background: #ffffff; margin-bottom: 20px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .script-title { font-weight: bold; font-size: 15px; margin-bottom: 15px; color: #2c3e50; border-bottom: 2px solid #eef2f5; padding-bottom: 8px; }
+  .item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 8px; }
+  .item-text { flex: 1; font-size: 14px; line-height: 1.4; margin-right: 12px; color: #555; }
+  .copy-btn { background: #007aff; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+  .copy-btn:active { background: #005bb5; }
 </style>
 </head>
 <body>
@@ -70,96 +20,179 @@
 <h2>インスタリール用 コピペ台本</h2>
 
 <!-- 台本1 -->
-<div class="script-card">
-  <div class="script-title">1. 梅雨の湿気 × アイロンの持ちの悪さ</div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t1-1">もうすぐ梅雨…朝巻いても、駅に着く頃にはストレート🥲</div>
-    <button class="copy-btn" onclick="copyText('t1-1', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t1-2">スプレーでガチガチにするのも、もう疲れたよね？</div>
-    <button class="copy-btn" onclick="copyText('t1-2', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t1-3">そんな湿気の季節こそ『コテ巻き風パーマ』。雨の日でも、乾かしたての艶とカールが夜まで続く✨</div>
-    <button class="copy-btn" onclick="copyText('t1-3', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t1-4">今年の梅雨はストレスフリーに。ご予約はプロフィールのリンクから✂️</div>
-    <button class="copy-btn" onclick="copyText('t1-4', this)">コピー</button>
-  </div>
+<div class="script-card"><div class="script-title">1. 梅雨の湿気 × アイロンの持ちの悪さ</div>
+  <div class="item-row"><div class="item-text" id="t1-1">もうすぐ梅雨…朝巻いても、駅に着く頃にはストレート🥲</div><button class="copy-btn" onclick="copyText('t1-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t1-2">スプレーでガチガチにするのも、もう疲れたよね？</div><button class="copy-btn" onclick="copyText('t1-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t1-3">そんな湿気の季節こそ『コテ巻き風パーマ』。雨の日でも、乾かしたての艶とカールが夜まで続く✨</div><button class="copy-btn" onclick="copyText('t1-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t1-4">今年の梅雨はストレスフリーに。ご予約はプロフィールのリンクから✂️</div><button class="copy-btn" onclick="copyText('t1-4', this)">コピー</button></div>
 </div>
 
 <!-- 台本2 -->
-<div class="script-card">
-  <div class="script-title">2. 汗ばむ季節 × アイロンが苦手</div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t2-1">アイロン苦手女子へ。暑い朝から火傷と戦ってない？</div>
-    <button class="copy-btn" onclick="copyText('t2-1', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t2-2">後ろの髪は巻けないし、汗で首元に張り付くの最悪…</div>
-    <button class="copy-btn" onclick="copyText('t2-2', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t2-3">『コテ巻き風パーマ』なら、朝起きて軽く濡らして乾かすだけ。アイロン不要でこのクオリティ。</div>
-    <button class="copy-btn" onclick="copyText('t2-3', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t2-4">朝の準備マイナス10分！カウンセリング無料、ご予約はプロフから</div>
-    <button class="copy-btn" onclick="copyText('t2-4', this)">コピー</button>
-  </div>
+<div class="script-card"><div class="script-title">2. 汗ばむ季節 × アイロンが苦手</div>
+  <div class="item-row"><div class="item-text" id="t2-1">アイロン苦手女子へ。暑い朝から火傷と戦ってない？</div><button class="copy-btn" onclick="copyText('t2-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t2-2">後ろの髪は巻けないし、汗で首元に張り付くの最悪…</div><button class="copy-btn" onclick="copyText('t2-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t2-3">『コテ巻き風パーマ』なら、朝起きて軽く濡らして乾かすだけ。アイロン不要でこのクオリティ。</div><button class="copy-btn" onclick="copyText('t2-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t2-4">朝の準備マイナス10分！カウンセリング無料、ご予約はプロフから</div><button class="copy-btn" onclick="copyText('t2-4', this)">コピー</button></div>
 </div>
 
 <!-- 台本3 -->
-<div class="script-card">
-  <div class="script-title">3. 初夏の旅行 × 荷物の多さ・ヘアセットの手間</div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t3-1">夏の旅行、まだ重いヘアアイロン持っていくの？</div>
-    <button class="copy-btn" onclick="copyText('t3-1', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t3-2">旅先の慣れないドライヤーじゃ、思い通りに巻けないよね…</div>
-    <button class="copy-btn" onclick="copyText('t3-2', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t3-3">『コテ巻き風パーマ』をかけておけば、旅先でも手ぐしで乾かすだけでいつでも写真映えする髪に📷</div>
-    <button class="copy-btn" onclick="copyText('t3-3', this)">コピー</button>
-  </div>
-  
-  <div class="item-row">
-    <div class="item-text" id="t3-4">お出かけ前に髪の仕込みを。ご予約お待ちしております！</div>
-    <button class="copy-btn" onclick="copyText('t3-4', this)">コピー</button>
-  </div>
+<div class="script-card"><div class="script-title">3. 初夏の旅行 × 荷物の多さ・ヘアセットの手間</div>
+  <div class="item-row"><div class="item-text" id="t3-1">夏の旅行、まだ重いヘアアイロン持っていくの？</div><button class="copy-btn" onclick="copyText('t3-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t3-2">旅先の慣れないドライヤーじゃ、思い通りに巻けないよね…</div><button class="copy-btn" onclick="copyText('t3-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t3-3">『コテ巻き風パーマ』をかけておけば、旅先でも手ぐしで乾かすだけでいつでも写真映えする髪に📷</div><button class="copy-btn" onclick="copyText('t3-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t3-4">お出かけ前に髪の仕込みを。ご予約お待ちしております！</div><button class="copy-btn" onclick="copyText('t3-4', this)">コピー</button></div>
 </div>
 
-<!-- ※必要に応じてここに台本4〜20を追記できます -->
+<!-- 台本4 -->
+<div class="script-card"><div class="script-title">4. 湿気による広がり × ダメージ毛</div>
+  <div class="item-row"><div class="item-text" id="t4-1">雨の日、髪がバサバサに広がる…って諦めてない？</div><button class="copy-btn" onclick="copyText('t4-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t4-2">毎日のアイロンの熱ダメージが、実は広がりの原因かも。</div><button class="copy-btn" onclick="copyText('t4-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t4-3">ダメージレスな『コテ巻き風パーマ』で、湿気を跳ね返すようなまとまりとツヤ感を。</div><button class="copy-btn" onclick="copyText('t4-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t4-4">髪質改善しながらパーマかけられます。詳細はプロフィールへ</div><button class="copy-btn" onclick="copyText('t4-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本5 -->
+<div class="script-card"><div class="script-title">5. クーラーの乾燥 × 夕方のパサつき</div>
+  <div class="item-row"><div class="item-text" id="t5-1">夕方、鏡に映った自分の髪…パサパサで老けて見えてない？</div><button class="copy-btn" onclick="copyText('t5-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t5-2">クーラーの風と毎日のアイロンで、髪の水分は限界に💦</div><button class="copy-btn" onclick="copyText('t5-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t5-3">『コテ巻き風パーマ』は保湿しながら形を作るから、夕方になっても潤ったようなプルンとしたカールが復活。</div><button class="copy-btn" onclick="copyText('t5-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t5-4">パサつきとサヨナラしたい方、プロフからご相談ください</div><button class="copy-btn" onclick="copyText('t5-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本6 -->
+<div class="script-card"><div class="script-title">6. 結びグセ × 朝の寝癖直し</div>
+  <div class="item-row"><div class="item-text" id="t6-1">暑くて結ぶ日が増える季節。ほどいた時の跡、ダサくない？</div><button class="copy-btn" onclick="copyText('t6-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t6-2">寝癖と結びグセを直すためだけに、毎朝シャワー浴びてない？</div><button class="copy-btn" onclick="copyText('t6-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t6-3">『コテ巻き風パーマ』なら、サッと結ぶだけでおくれ毛まで可愛い。ほどいてもふんわりカール。</div><button class="copy-btn" onclick="copyText('t6-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t6-4">結んでも下ろしても可愛いスタイル作ります。ご予約はリンクから</div><button class="copy-btn" onclick="copyText('t6-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本7 -->
+<div class="script-card"><div class="script-title">7. どんよりした朝 × 時短への渇望</div>
+  <div class="item-row"><div class="item-text" id="t7-1">雨の日の朝くらい、あと10分長く寝ていたくない？</div><button class="copy-btn" onclick="copyText('t7-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t7-2">髪が決まらないだけで、1日のモチベーション下がるよね。</div><button class="copy-btn" onclick="copyText('t7-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t7-3">乾かすだけでコテで巻いたような仕上がり。寝起きのバサバサ髪が、あっという間に『今日可愛い』に。</div><button class="copy-btn" onclick="copyText('t7-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t7-4">朝の余裕を手に入れませんか？ご予約はプロフィールから</div><button class="copy-btn" onclick="copyText('t7-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本8 -->
+<div class="script-card"><div class="script-title">8. アホ毛・表面のうねり × 巻き髪のアンバランス</div>
+  <div class="item-row"><div class="item-text" id="t8-1">毛先は巻けても、表面のモワモワ・アホ毛が気になる季節…</div><button class="copy-btn" onclick="copyText('t8-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t8-2">ストレートアイロンしてからコテで巻くの、時間かかりすぎ！</div><button class="copy-btn" onclick="copyText('t8-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t8-3">根元のボリュームを抑えつつ、毛先にだけ『コテ巻き風パーマ』。これ一つで無敵のシルエット完成。</div><button class="copy-btn" onclick="copyText('t8-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t8-4">あなたに合ったパーマを提案します。まずは無料カウンセリングへ</div><button class="copy-btn" onclick="copyText('t8-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本9 -->
+<div class="script-card"><div class="script-title">9. ジム・ヨガ帰り × お出かけ前の再セット</div>
+  <div class="item-row"><div class="item-text" id="t9-1">ジムやヨガの帰り、シャワー後の髪型どうしてる？</div><button class="copy-btn" onclick="copyText('t9-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t9-2">すっぴん＆ボサボサ髪で帰るの、ちょっと恥ずかしいよね。</div><button class="copy-btn" onclick="copyText('t9-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t9-3">『コテ巻き風パーマ』なら、ロッカールームのドライヤーで乾かすだけで完璧なスタイリングに復活✨そのまま出かけられる！</div><button class="copy-btn" onclick="copyText('t9-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t9-4">アクティブな女性の味方です。ご予約はプロフリンクから</div><button class="copy-btn" onclick="copyText('t9-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本10 -->
+<div class="script-card"><div class="script-title">10. 帽子を被る日 × ペタンコトップ</div>
+  <div class="item-row"><div class="item-text" id="t10-1">紫外線対策で帽子を被った日。取った時のペタンコ髪、絶望的じゃない？</div><button class="copy-btn" onclick="copyText('t10-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t10-2">せっかく巻いた毛先も、なんだかバランスが悪くなる…</div><button class="copy-btn" onclick="copyText('t10-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t10-3">『コテ巻き風パーマ』なら、空気を含んだようなカールが潰れない。帽子を取っても手ぐしでサッとふんわり復活。</div><button class="copy-btn" onclick="copyText('t10-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t10-4">帽子にも似合うパーマスタイル、ご提案します。プロフからどうぞ</div><button class="copy-btn" onclick="copyText('t10-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本11 -->
+<div class="script-card"><div class="script-title">11. 「パーマ＝おばさん」の誤解 × 失敗トラウマ</div>
+  <div class="item-row"><div class="item-text" id="t11-1">『パーマかけると老ける・広がる』…過去に失敗してトラウマになってない？</div><button class="copy-btn" onclick="copyText('t11-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t11-2">ソバージュみたいにチリチリになったらどうしようって不安だよね。</div><button class="copy-btn" onclick="copyText('t11-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t11-3">今のパーマは違います。『コテ巻き風パーマ』は太めのコテで巻いたような、ゆるっと柔らかい韓国風の質感が叶います。</div><button class="copy-btn" onclick="copyText('t11-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t11-4">人生最高のパーマ、お約束します。ご予約はプロフィールから</div><button class="copy-btn" onclick="copyText('t11-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本12 -->
+<div class="script-card"><div class="script-title">12. 夕立・ゲリラ豪雨 × 突然の予定</div>
+  <div class="item-row"><div class="item-text" id="t12-1">突然の雨で髪が爆発！この後予定あるのに…って焦ったことない？</div><button class="copy-btn" onclick="copyText('t12-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t12-2">巻いた髪がストレートに戻る絶望感、痛いほどわかります。</div><button class="copy-btn" onclick="copyText('t12-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t12-3">『コテ巻き風パーマ』は濡れると逆にカールが出るから、少し湿気があっても可愛さをキープ。天気に左右されない最強の髪へ。</div><button class="copy-btn" onclick="copyText('t12-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t12-4">天気に負けない髪、手に入れませんか？ご予約はリンクから</div><button class="copy-btn" onclick="copyText('t12-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本13 -->
+<div class="script-card"><div class="script-title">13. 前髪・顔周りの崩れ × 第一印象</div>
+  <div class="item-row"><div class="item-text" id="t13-1">マスクの湿気と汗で、顔周りの巻きが即落ちる問題…</div><button class="copy-btn" onclick="copyText('t13-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t13-2">顔周りの髪が決まらないと、1日中鏡見てため息出ちゃうよね。</div><button class="copy-btn" onclick="copyText('t13-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t13-3">全体の『コテ巻き風パーマ』に合わせて顔周りも計算してパーマをかけます。流れるような韓国風バングが1日中崩れない。</div><button class="copy-btn" onclick="copyText('t13-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t13-4">小顔に見えるパーマスタイル、お任せください。ご予約はプロフから</div><button class="copy-btn" onclick="copyText('t13-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本14 -->
+<div class="script-card"><div class="script-title">14. カラーの色落ち × アイロンの多用</div>
+  <div class="item-row"><div class="item-text" id="t14-1">夏に向けて明るくしたカラー、すぐ色落ちしてない？</div><button class="copy-btn" onclick="copyText('t14-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t14-2">毎日の高温アイロンが、実はカラーの色落ちを加速させてるんです⚠️</div><button class="copy-btn" onclick="copyText('t14-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t14-3">『コテ巻き風パーマ』で毎日のアイロンを卒業すれば、カラーの持ちも格段にアップ。ツヤと色味が長く楽しめます。</div><button class="copy-btn" onclick="copyText('t14-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t14-4">髪を労わるパーマ、始めませんか？詳細はプロフィールへ</div><button class="copy-btn" onclick="copyText('t14-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本15 -->
+<div class="script-card"><div class="script-title">15. 「不器用だから…」という諦め × 憧れのスタイル</div>
+  <div class="item-row"><div class="item-text" id="t15-1">インスタで見かける『ゆるふわ巻き』。私には無理って諦めてない？</div><button class="copy-btn" onclick="copyText('t15-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t15-2">動画を見ながらアイロンしても、右と左で全然違う形になるよね…</div><button class="copy-btn" onclick="copyText('t15-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t15-3">不器用さん大歓迎。私が計算して『コテ巻き風パーマ』をかけるので、あなたは家でバーッと乾かすだけで美容室帰りの仕上がりに。</div><button class="copy-btn" onclick="copyText('t15-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t15-4">もうアイロンで悩まないで！ご予約はプロフィールのリンクから</div><button class="copy-btn" onclick="copyText('t15-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本16 -->
+<div class="script-card"><div class="script-title">16. ボブ・ミディアムの肩ハネ × 伸ばしかけの憂鬱</div>
+  <div class="item-row"><div class="item-text" id="t16-1">肩に当たる長さのハネ。毎朝アイロンで内巻きにするの疲れない？</div><button class="copy-btn" onclick="copyText('t16-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t16-2">湿気があると、直しても直しても夕方には外ハネに戻っちゃう…</div><button class="copy-btn" onclick="copyText('t16-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t16-3">その長さこそ『コテ巻き風パーマ』の出番。ハネを活かしたくびれスタイルが、乾かすだけで自動的に完成します。</div><button class="copy-btn" onclick="copyText('t16-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t16-4">伸ばしかけの髪も可愛く乗り切ろう。ご予約はプロフから</div><button class="copy-btn" onclick="copyText('t16-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本17 -->
+<div class="script-card"><div class="script-title">17. 忙しいワーママ × 自分にかける時間</div>
+  <div class="item-row"><div class="item-text" id="t17-1">朝は子供の準備で戦場。自分の髪に時間をかける余裕なんてないママへ。</div><button class="copy-btn" onclick="copyText('t17-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t17-2">気づけば毎日同じひっつめ結び…。本当はオシャレしたいのに。</div><button class="copy-btn" onclick="copyText('t17-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t17-3">『コテ巻き風パーマ』なら、手ぐしで乾かすだけで『ちゃんとお手入れしてる感』が出ます。忙しいママの最強の味方。</div><button class="copy-btn" onclick="copyText('t17-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t17-4">自分のための時短ビューティー、始めましょう。ご予約はリンクから</div><button class="copy-btn" onclick="copyText('t17-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本18 -->
+<div class="script-card"><div class="script-title">18. 直毛すぎる悩み × アイロンが効かない髪質</div>
+  <div class="item-row"><div class="item-text" id="t18-1">アイロンで巻いても1時間で真っ直ぐになる、超直毛さんへ。</div><button class="copy-btn" onclick="copyText('t18-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t18-2">『私の髪質じゃ無理なんだ』って、可愛いスタイルを諦めてない？</div><button class="copy-btn" onclick="copyText('t18-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t18-3">直毛さんにこそ『コテ巻き風パーマ』。適切な薬と温度調整で、あなた史上最高に柔らかいプルンとしたカールを作ります。</div><button class="copy-btn" onclick="copyText('t18-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t18-4">髪質改善パーマで新しい自分へ。カウンセリングはプロフから</div><button class="copy-btn" onclick="copyText('t18-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本19 -->
+<div class="script-card"><div class="script-title">19. お酒を飲んだ翌朝 × むくみとボサボサ髪</div>
+  <div class="item-row"><div class="item-text" id="t19-1">飲み会が増える季節。翌朝の二日酔いと寝癖、最悪じゃない？</div><button class="copy-btn" onclick="copyText('t19-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t19-2">頭が痛いのに、アイロンの電源を入れて熱と戦う地獄の朝…</div><button class="copy-btn" onclick="copyText('t19-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t19-3">『コテ巻き風パーマ』なら、濡らしてオイルを揉み込み、乾かすだけでOK。少しだるい朝でも、顔周りのカールが華やかさをキープ。</div><button class="copy-btn" onclick="copyText('t19-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t19-4">どんな朝でも『可愛い』を約束します。ご予約はプロフィールへ</div><button class="copy-btn" onclick="copyText('t19-4', this)">コピー</button></div>
+</div>
+
+<!-- 台本20 -->
+<div class="script-card"><div class="script-title">20. 褒められたい願望 × 「巻いてない」の優越感</div>
+  <div class="item-row"><div class="item-text" id="t20-1">『今日、髪の毛巻くのすごく上手だね！』って言われたくない？</div><button class="copy-btn" onclick="copyText('t20-1', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t20-2">でも毎日完璧に巻くのは無理だし、湿気ですぐバレる…</div><button class="copy-btn" onclick="copyText('t20-2', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t20-3">『実はこれ、パーマなんだ』って自慢できるのが『コテ巻き風パーマ』。アイロンで巻いたようなリアルな質感が、いつでもあなたのものに。</div><button class="copy-btn" onclick="copyText('t20-3', this)">コピー</button></div>
+  <div class="item-row"><div class="item-text" id="t20-4">周りに褒められる髪へ。ご予約・ご相談はプロフリンクから</div><button class="copy-btn" onclick="copyText('t20-4', this)">コピー</button></div>
+</div>
+
+<!-- ============================================== -->
+<!-- ※今後、新しく台本を追加する場合は、この下に追加用テンプレートを貼り付けます -->
+<!-- ============================================== -->
 
 <script>
   function copyText(elementId, btnElement) {
     const text = document.getElementById(elementId).innerText;
-    
-    // クリップボードにコピー
     navigator.clipboard.writeText(text).then(() => {
-      // ボタンのテキストを一時的に変更して完了を知らせる
       const originalText = btnElement.innerText;
       btnElement.innerText = '完了！';
-      btnElement.style.background = '#34c759'; // 緑色に変更
-      
+      btnElement.style.background = '#34c759';
       setTimeout(() => {
         btnElement.innerText = originalText;
-        btnElement.style.background = '#007aff'; // 元の色に戻す
+        btnElement.style.background = '#007aff';
       }, 1500);
     }).catch(err => {
       console.error('コピーに失敗しました', err);
