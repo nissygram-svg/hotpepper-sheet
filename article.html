@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ブログ本文案｜個別ページ</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background:#f6f5f3; color:#222; padding:16px; }
+  .wrap { max-width:860px; margin:0 auto; }
+  .top-actions { display:flex; gap:8px; flex-wrap:wrap; margin:0 0 14px; }
+  a.button, button { text-decoration:none; background:#222; color:#fff; border-radius:999px; padding:9px 13px; font-size:12px; font-weight:800; border:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+  a.secondary, button.secondary { background:#eee; color:#222; }
+  .card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,.06); margin-bottom:16px; }
+  .badge { display:inline-block; background:#222; color:#fff; font-size:11px; font-weight:850; padding:4px 9px; border-radius:999px; margin-bottom:10px; }
+  h1 { font-size:21px; line-height:1.45; margin-bottom:12px; }
+  .meta { color:#888; font-size:12px; line-height:1.7; margin-bottom:16px; }
+  .field { margin-bottom:14px; }
+  .field-label { color:#888; font-size:11px; display:flex; justify-content:space-between; margin-bottom:5px; }
+  .field-content { white-space:pre-wrap; background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:13px; font-size:14px; line-height:1.8; }
+  .body { min-height:180px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button.copied { background:#4caf50; color:#fff; }
+  .pager { display:flex; justify-content:space-between; gap:10px; }
+  .pager a { color:#222; font-weight:800; font-size:13px; text-decoration:underline; text-underline-offset:4px; }
+  .error { color:#666; line-height:1.8; }
+  @media (min-width:720px) { body { padding:28px; } h1 { font-size:26px; } .card { padding:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top-actions">
+    <a class="button" href="blogs.html">記事一覧へ戻る</a>
+    <a class="button secondary" href="index.html">トップへ戻る</a>
+  </div>
+  <main id="app" class="card">記事を読み込み中です。</main>
+  <nav class="card pager" id="pager" aria-label="前後の記事"></nav>
+</div>
+<script src="data/articles.js"></script>
+<script>
+(function(){
+  const articles = Array.isArray(window.BLOG_ARTICLES) ? window.BLOG_ARTICLES : [];
+  const app = document.getElementById('app');
+  const pager = document.getElementById('pager');
+  const params = new URLSearchParams(location.search);
+  const id = Number(params.get('id') || '1');
+  const index = id - 1;
+  const article = articles[index];
+  const nf = new Intl.NumberFormat('ja-JP', { minimumIntegerDigits: 2 });
+
+  function escapeHtml(text) { return String(text || '').replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s])); }
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = 'コピー済み';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 1200);
+    });
+  }
+  window.copyCurrent = function(type, btn) {
+    if (!article) return;
+    const text = type === 'title' ? article.title : type === 'content' ? article.content : `${article.title}\n\n${article.content}`;
+    copyText(text, btn);
+  };
+
+  if (!article) {
+    document.title = '記事が見つかりません';
+    app.innerHTML = '<p class="error">記事が見つかりませんでした。URLの番号を確認するか、記事一覧へ戻ってください。</p>';
+    pager.innerHTML = '<a href="blogs.html">記事一覧へ戻る</a>';
+    return;
+  }
+
+  const no = nf.format(index + 1);
+  document.title = `${article.title}｜ブログ本文案`;
+  app.innerHTML = `<span class="badge">No.${no}</span>
+    <h1>${escapeHtml(article.title)}</h1>
+    <p class="meta">この記事は data/articles.js の ${index + 1} 番目のデータから自動生成されています。</p>
+    <div class="field"><div class="field-label"><span>タイトル</span><span>${article.title.replace(/^【西】/, '').length}文字</span></div><div class="field-content">${escapeHtml(article.title)}</div></div>
+    <div class="field"><div class="field-label"><span>本文</span><span>${article.content.length}文字</span></div><div class="field-content body">${escapeHtml(article.content)}</div></div>
+    <div class="actions">
+      <button onclick="copyCurrent('title', this)">タイトルコピー</button>
+      <button onclick="copyCurrent('content', this)">本文コピー</button>
+      <button onclick="copyCurrent('all', this)">タイトル＋本文をまとめてコピー</button>
+    </div>`;
+
+  const prev = index > 0 ? `<a href="article.html?id=${index}">← No.${nf.format(index)} 前の記事</a>` : '<span></span>';
+  const next = index < articles.length - 1 ? `<a href="article.html?id=${index + 2}">No.${nf.format(index + 2)} 次の記事 →</a>` : '<span></span>';
+  pager.innerHTML = prev + next;
+})();
+</script>
+</body>
+</html>
